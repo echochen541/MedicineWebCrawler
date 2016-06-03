@@ -11,6 +11,7 @@ public class Main {
 		for (int i = begin; i < end; i++) {
 			String url = "http://www.360kad.com/product/" + i + ".shtml";
 			Crawler.parseHtml(url);
+			System.out.println();
 		}
 		System.out.println((System.currentTimeMillis() - start) / 1000.0 + "s");
 	}
