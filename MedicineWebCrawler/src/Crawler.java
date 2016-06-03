@@ -11,7 +11,7 @@ import org.jsoup.select.Elements;
 
 public class Crawler {
 	public static void main(String[] args) {
-		parseHtml("http://www.360kad.com/product/1107195.shtml");
+		parseHtml("http://www.360kad.com/product/7.shtml");
 	}
 
 	public static void parseHtml(String url) {
@@ -29,7 +29,8 @@ public class Crawler {
 
 			System.out.println("是否处方药：");
 			eles = doc.getElementsByClass("YIrd_p");
-			System.out.println(eles.get(0).text());
+			if (eles.size() != 0)
+				System.out.println(eles.get(0).text());
 
 			System.out.println("说明书：");
 			eles = doc.getElementsByClass("prodetail06").select("p");
@@ -50,7 +51,7 @@ public class Crawler {
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			// e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 }
