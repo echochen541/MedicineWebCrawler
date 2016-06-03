@@ -4,6 +4,8 @@
  *
  */
 
+import java.io.IOException;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -49,9 +51,9 @@ public class Crawler {
 				System.out.println(text + "  " + link);
 			}
 
-		} catch (Exception e) {
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
 }
