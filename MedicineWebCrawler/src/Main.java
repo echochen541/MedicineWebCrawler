@@ -6,8 +6,8 @@
 public class Main {
 	public static void main(String[] args) {
 		// long start = System.currentTimeMillis();
-		int begin = 1;
-		int end = 100;
+		int begin = 200;
+		int end = 300;
 		for (int i = begin; i < end; i++) {
 			String url = "http://www.360kad.com/product/" + i + ".shtml";
 			Medicine medicine = Crawler.parseHtml(url);

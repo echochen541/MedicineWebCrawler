@@ -74,7 +74,7 @@ public class Crawler {
 				ele = eles.get(i);
 				text = ele.text();
 				String link = ele.attr("abs:href");
-				article += text + "  " + link;
+				article += link + "  " + text;
 				// System.out.println(text + " " + link);
 			}
 
