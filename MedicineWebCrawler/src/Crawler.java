@@ -32,10 +32,10 @@ public class Crawler {
 					"body > div.Ywrap > div.Ywrap_r > div.Ypro_deta > div:nth-child(3) > div.YIrd > ul > li:nth-child(1)");
 			Element ele = eles.get(0);
 			String text = ele.text();
-			name = text.substring(text.indexOf("£º") + 1).trim();
+			name = text.substring(text.indexOf("ï¼š") + 1).trim();
 //			System.out.println(name);
 
-			// System.out.println("·ÖÀà£º");
+			// System.out.println("åˆ†ç±»ï¼š");
 			eles = doc.getElementsByClass("noIndx");
 			for (int i = 0; i < eles.size(); i++) {
 				ele = eles.get(i);
@@ -46,20 +46,20 @@ public class Crawler {
 					category2 = text;
 				if (i == 2)
 					category3 = text;
-				// System.out.println("µÚ" + (i + 1) + "¼¶·ÖÀà:" + text);
+				// System.out.println("ç¬¬" + (i + 1) + "çº§åˆ†ç±»:" + text);
 			}
 
-			// System.out.println("ÊÇ·ñ´¦·½Ò©£º");
+			// System.out.println("æ˜¯å¦å¤„æ–¹è¯ï¼š");
 			eles = doc.getElementsByClass("YIrd_p");
 			if (eles.size() != 0) {
-				if (eles.get(0).text().contains("·Ç´¦·½Ò©"))
+				if (eles.get(0).text().contains("éžå¤„æ–¹è¯"))
 					isOtc = 1;
 				else
 					isOtc = 0;
 				// System.out.println(eles.get(0).text());
 			}
 
-			// System.out.println("ËµÃ÷Êé£º");
+			// System.out.println("è¯´æ˜Žä¹¦ï¼š");
 			eles = doc.getElementsByClass("prodetail06").select("p");
 			for (int i = 1; i < eles.size(); i++) {
 				ele = eles.get(i);
@@ -68,7 +68,7 @@ public class Crawler {
 				// System.out.println(text);
 			}
 
-			// System.out.println("Ïà¹ØÎÄÕÂ£º");
+			// System.out.println("ç›¸å…³æ–‡ç« ï¼š");
 			eles = doc.getElementsByClass("articleList").select("a");
 			for (int i = 0; i < eles.size(); i++) {
 				ele = eles.get(i);
