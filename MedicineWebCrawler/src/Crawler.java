@@ -11,7 +11,7 @@ import org.jsoup.select.Elements;
 
 public class Crawler {
 	public static void main(String[] args) {
-		parseHtml("http://www.360kad.com/product/5.shtml");
+		parseHtml("http://www.360kad.com/product/1262657.shtml");
 	}
 
 	public static Medicine parseHtml(String url) {
@@ -23,17 +23,16 @@ public class Crawler {
 		int isOtc = 0;
 		String specification = "";
 		String article = "";
-		try {
 
-			// System.out.println(url);
+		try {
+			System.out.println(url);
 			doc = (Document) Jsoup.connect(url).get();
 
-			Elements eles = doc.select(
-					"body > div.Ywrap > div.Ywrap_r > div.Ypro_deta > div:nth-child(3) > div.YIrd > ul > li:nth-child(1)");
+			Elements eles = doc.select("#wrap990list1 > ul > li:nth-child(1)");
 			Element ele = eles.get(0);
 			String text = ele.text();
 			name = text.substring(text.indexOf("：") + 1).trim();
-//			System.out.println(name);
+			// System.out.println(name);
 
 			// System.out.println("分类：");
 			eles = doc.getElementsByClass("noIndx");
@@ -60,8 +59,8 @@ public class Crawler {
 			}
 
 			// System.out.println("说明书：");
-			eles = doc.getElementsByClass("prodetail06").select("p");
-			for (int i = 1; i < eles.size(); i++) {
+			eles = doc.select("#wrap990list8 > ul");
+			for (int i = 0; i < eles.size(); i++) {
 				ele = eles.get(i);
 				text = ele.text();
 				specification += text;
@@ -69,22 +68,25 @@ public class Crawler {
 			}
 
 			// System.out.println("相关文章：");
-			eles = doc.getElementsByClass("articleList").select("a");
+			eles = doc.getElementsByClass("relative-article").select("a");
 			for (int i = 0; i < eles.size(); i++) {
 				ele = eles.get(i);
 				text = ele.text();
 				String link = ele.attr("abs:href");
-				article += link + "  " + text;
-				// System.out.println(text + " " + link);
+				article += text + "-" + link + "|";
 			}
+			// System.out.println(article);
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			// System.out.println(url);
 			// e.printStackTrace();
 		}
-		if (name.equals(""))
+		if (name.equals("")) {
+			System.out.println("fail");
 			return null;
-		else
+		} else {
+			System.out.println("success");
 			return new Medicine(name, category1, category2, category3, isOtc, specification, article, url);
+		}
 	}
 }
